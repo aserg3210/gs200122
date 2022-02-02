@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Specifications;
@@ -16,7 +18,17 @@ namespace Infrastructure.Data
             //соблюдаем порядок if
             if(spec.Criteria != null)
             {
-                query = query.Where(spec.Criteria);
+                //
+                //foreach (TEntity entity in inputQuery)
+                //{
+                //    bool result = spec.Criteria.Compile().Invoke(entity);
+                    
+                //    if (result)
+                //    {
+
+                //    }
+                //}
+                query = query.Where(spec.Criteria);///
             }
             if(spec.OrderBy != null)
             {
@@ -32,6 +44,6 @@ namespace Infrastructure.Data
             }
             query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
             return query;
-        } 
+        }
     }
 }

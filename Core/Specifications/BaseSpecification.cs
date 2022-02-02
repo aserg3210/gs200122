@@ -18,6 +18,12 @@ namespace Core.Specifications
             Includes = new List<Expression<Func<T, object>>>();
         }
         public Expression<Func<T, bool>> Criteria {get;}
+
+        //решение проблемы с кириллицей
+        //public virtual bool CompareWithToRussianLowerCase()
+        //{
+        //    return false;
+        //}
         public List<Expression<Func<T, object>>> Includes {get; private set;}
 
         public Expression<Func<T, object>> OrderBy {get; private set;} 

@@ -29,9 +29,15 @@ namespace Infrastructure.Data
                     foreach (var property in propertires)
                     {
                         modelBuilder.Entity(entityType.Name).Property(property.Name).HasConversion<double>();
+
                     }
                 }
             }
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //optionsBuilder.EnableSensitiveDataLogging();
+            //optionsBuilder.LogTo(message => System.Diagnostics.Debug.WriteLine(message));
         }
     }
 }

@@ -22,8 +22,15 @@ namespace Core.Specifications
         public string Sort { get; set; }
         public string Search
         {
-            get => _search;
-            set => _search = value.ToLower();
+            get  
+            {
+                //System.Diagnostics.Debug.WriteLine(_search);// - диагностирована ошибка в 
+                //ProductsWithTypesAndBrandsSpecification и ProductWithFiltersForCountSpecification
+                //при передаче параметра в base связана с переводом в нижний регистр - не находит искомое
+                //если в БД есть имена с буквами в верхнем регистре 
+                return _search;
+            }
+            set => _search = value;//.ToLower() И здесь
         }
     }
 }

@@ -11,7 +11,7 @@ import { ShopService } from './shop.service';
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
-  @ViewChild('search') searchTerm: ElementRef;
+  @ViewChild('search', {static: false}) searchTerm: ElementRef;
   products: IProduct[];
   brands: IBrand[];
   productTypes: IProductType[];
@@ -39,6 +39,7 @@ export class ShopComponent implements OnInit {
         this.shopParams.pageNumber = response.pageIndex;
         this.shopParams.pageSize = response.pageSize;
         this.totalCount = response.count;
+        //console.dir(response);
       },
       error: (e) => console.log(e)
     });
@@ -62,6 +63,7 @@ export class ShopComponent implements OnInit {
   }
   onTypeSelected(typeId: number){
     this.shopParams.typeId = typeId;
+    this.shopParams.pageNumber = 1;
     this.getProducts();
   }
   onSortSelected(sort: string){
@@ -71,12 +73,13 @@ export class ShopComponent implements OnInit {
   onPageChanged(event: any){
     if(this.shopParams.pageNumber != event){
       this.shopParams.pageNumber = event;
-      this.getProducts();      
+      this.getProducts();
     }
 
   }
   onSearch(){
     this.shopParams.search = this.searchTerm.nativeElement.value;
+    //console.dir(this.searchTerm);
     this.shopParams.pageNumber = 1;
     this.getProducts();
   }

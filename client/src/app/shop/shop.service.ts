@@ -31,7 +31,10 @@ export class ShopService {
 
     return this.http.get<IPagination>(this.baseUrl + 'products', {observe: 'response', params})
       .pipe(
-        map(response => {return response.body;})
+        map(response => {
+          console.dir(response.body);
+          return response.body;
+        })
       )
   }
   getBrands(){

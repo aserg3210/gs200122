@@ -10,8 +10,10 @@ namespace Core.Specifications
     public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<Product>
     {
         public ProductsWithTypesAndBrandsSpecification(ProductSpecParams productParams)
-            : base( x => 
-                (string.IsNullOrEmpty(productParams.Search) || x.Name.ToLower().Contains(productParams.Search)) &&
+            //x.Name.ToLower и productParams.Search.ToLower() исп только с латиницей.
+            //В sqlServer возможно использ UTF-8. В sqlLite НЕТ!!!
+            : base( x =>
+                (string.IsNullOrEmpty(productParams.Search) || x.Name.Contains(productParams.Search)) &&
                 (!productParams.BrandId.HasValue || x.ProductBrandId == productParams.BrandId) &&
                 (!productParams.TypeId.HasValue || x.ProductTypeId == productParams.TypeId)
             )
