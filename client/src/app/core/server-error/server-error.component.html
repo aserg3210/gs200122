@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <h4>Ошибка сервера. Обновите страницу.</h4>
+  <ng-container *ngIf="error">
+    <h5 class="text-danger">{{error.message}}</h5>
+    <p class="font-weight-bold">
+      Если вы видите это сообщение, тогда, вероятно,
+      ошибка не связана с Angular
+    </p>
+    <p>Что делать?:</p>
+    <ol>
+      <li>Откройте в браузере dev tools</li>
+      <li>Исследуйте network tab</li>
+      <li>Смотрите на failing request</li>
+      <li>Проверьте URL failing request на корректность</li>
+      <li>Воспроизведите ошибку в postman - если в postman
+          такой же ответ, значит проблема не связана с Angular
+      </li>
+    </ol>
+    <p>Далее исследуйте stack trace</p>
+    <code class="mt-5" style="background-color: whitesmoke;">
+      {{error.details}}
+    </code>
+  </ng-container>
+
+</div>
