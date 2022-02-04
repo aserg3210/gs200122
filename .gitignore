@@ -8,3 +8,4 @@ brands.json
 products.json
 types.json
 wwwroot
+docker-compose.yml
