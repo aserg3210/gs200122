@@ -9,12 +9,16 @@ import { ShopRoutingModule } from './shop/shop-routing.module';
 import { ShopComponent } from './shop/shop.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent, data: {breadcrumb: 'Home'}},
+  {path: '', component: HomeComponent, data: {breadcrumb: 'Главная'}},
   {path: 'test-error', component: TestErrorComponent, data: {breadcrumb: 'Test Errors'}},
   {path: 'server-error', component: ServerErrorComponent, data: {breadcrumb: 'Server Errors'}},
   {path: 'not-found', component: NotFoundComponent, data: {breadcrumb: 'NotFound'}},
   {path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule),
-  data: {breadcrumb: 'Shop'}},//lazy
+  data: {breadcrumb: 'Магазин'}},//lazy
+  {path: 'basket', loadChildren: () => import('./basket/basket.module')
+    .then(mod => mod.BasketModule), data: {breadcrumb: 'Корзина'}},//lazy
+    {path: 'checkout', loadChildren: () => import('./checkout/checkout.module')
+    .then(mod => mod.CheckoutModule), data: {breadcrumb: 'Checkout'}},//
   {path: '**', redirectTo: 'not-found', pathMatch: 'full'}
 ];
 
