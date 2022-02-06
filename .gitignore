@@ -6,6 +6,7 @@ appsettings.json
 *.db-wal
 brands.json
 products.json
+delivery.json
 types.json
 wwwroot
 docker-compose.yml
