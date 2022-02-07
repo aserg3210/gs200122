@@ -9,12 +9,15 @@ export class PagerComponent implements OnInit {
 
   @Input() totalCount: number;
   @Input() pageSize: number;
-  @Output() pageChanged = new EventEmitter();//EventEmitter импортировать из angular/core
+  @Input() pageNumber: number;
+  @Output() pageChanged = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
-  onPagerChange(event: any){
+
+  onPagerChange(event: any) {
     this.pageChanged.emit(event.page);
   }
 }

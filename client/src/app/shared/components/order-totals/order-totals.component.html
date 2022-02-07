@@ -1,22 +1,22 @@
-<div class="bg-light px-4 py-3 text-uppercase font-weight-bold">
+<div class="bg-light px-4 text-uppercase font-weight-bold"  style="padding: 1.20em;">
   Order Summary
 </div>
 <div class="p-4">
   <p class="font-italic mb-4">
     Стоимость доставки будет добавлена в зависимости от выбора во время оформления заказа
   </p>
-  <ul class="list-unstuled mb-4" *ngIf="(basketTotal$ | async)">
+  <ul class="list-unstuled mb-4">
     <li class="d-flex justify-content-between py-3 border-bottom">
       <strong class="text-muted">Промежуточный итог</strong>
-      <strong>{{(basketTotal$ | async).subtotal | currency}}</strong>
+      <strong>{{subtotal | currency}}</strong>
     </li>
     <li class="d-flex justify-content-between py-3 border-bottom">
       <strong class="text-muted">Доставка и обработка</strong>
-      <strong>{{(basketTotal$ | async).shipping | currency}}</strong>
+      <strong>{{shippingPrice | currency}}</strong>
     </li>
     <li class="d-flex justify-content-between py-3 border-bottom">
       <strong class="text-muted">Всего</strong>
-      <strong>{{(basketTotal$ | async).total | currency}}</strong>
+      <strong>{{total | currency}}</strong>
     </li>
   </ul>
 </div>
