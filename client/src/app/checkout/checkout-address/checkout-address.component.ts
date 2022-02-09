@@ -22,7 +22,7 @@ export class CheckoutAddressComponent implements OnInit {
         this.checkoutForm.get('addressForm').reset(address);
       },
       error: (e) => {
-        this.toastr.error(e.message);
+        // this.toastr.error(e.message);
         console.log(e);
       }
     });
